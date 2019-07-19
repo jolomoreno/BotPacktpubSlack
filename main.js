@@ -11,11 +11,11 @@ const slack = new Slack(slackConfig.webhook_url);
 const message = `Hola Kubide, esto es un mensaje desde un bot de Node`;
 
 const elements = {
-	title: { start: '<h2>', end: '</h2>' },
-	explicit: { el: '.product__author' }
+	title: { start: '<body>', end: '</body>' },
+	explicit: { el: '#PRUEBA' }
 }
 
-scrape ('https://www.packtpub.com/free-learning', elements, function (error, data) {
+scrape('https://www.packtpub.com/free-learning', elements, function (error, data) {
 	if (error) {
 		console.log(error);
 	} else {
