@@ -1,14 +1,11 @@
 const Slack = require( 'node-slack' );
 const scrape = require( 'html-scrape' );
 const $ = require('jquery');
-const listing = 'https://www.packtpub.com/packt/offers/free-learning';
+const listing = 'https://www.packtpub.com/free-learning';
 
 
 let slackConfig = {
-	webhook_url: 'https://kubide.slack.com/..............'
-	,token: '{your-webhook-token-here}'
-	,chan: '#tests'
-	,botName: 'FreeBooksBot'
+	webhook_url: 'https://hooks.slack.com/services/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'
 };
 
 const print = ( title, img ) => {
@@ -17,8 +14,6 @@ const print = ( title, img ) => {
 
 	slack.send( {
 		text: message
-		,channel: '@atuttle'
-		,username: 'FreeBooksBot'
 	}
 	,( err ) => {
 		if ( err ) {
@@ -27,12 +22,12 @@ const print = ( title, img ) => {
 	} );
 };
 
-const title = window.$(titleSelector)[0].innerHTML.trim();
 
 const titleSelector = '.dotd-title h2';
 const imgSelector = '.dotd-main-book-image img';
+
 const handler = ( err, window ) => {
-	console.log(' ENTRA ');
+	console.log(window, ' <<<<<< ENTRA WINDOW ');
 	const title = window.$(titleSelector)[0].innerHTML.trim();
 	const img = 'https:' + window.$( imgSelector ).data( 'original' ).trim();
 	print( title, img );
