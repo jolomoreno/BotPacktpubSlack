@@ -1,11 +1,13 @@
 const Slack = require( 'node-slack' );
-const scrape = require( 'scrape-html' );
+const scrape = require( 'html-scrape' );
+const $ = require('jquery');
 const listing = 'https://www.packtpub.com/packt/offers/free-learning';
 
+
 let slackConfig = {
-	webhook_url: 'https://hooks.slack.com/..............'
+	webhook_url: 'https://kubide.slack.com/..............'
 	,token: '{your-webhook-token-here}'
-	,chan: '#general'
+	,chan: '#tests'
 	,botName: 'FreeBooksBot'
 };
 
@@ -25,12 +27,20 @@ const print = ( title, img ) => {
 	} );
 };
 
+const title = window.$(titleSelector)[0].innerHTML.trim();
+
 const titleSelector = '.dotd-title h2';
 const imgSelector = '.dotd-main-book-image img';
 const handler = ( err, window ) => {
-	const title = window.$( titleSelector )[0].innerHTML.trim();
+	console.log(' ENTRA ');
+	const title = window.$(titleSelector)[0].innerHTML.trim();
 	const img = 'https:' + window.$( imgSelector ).data( 'original' ).trim();
 	print( title, img );
+	console.log(title, '<<<< title');
+	console.log(img, '<<<< img');
 };
 
+console.log(listing, '<<<< LISTING');
+console.log(titleSelector, '<<<< titleSelector');
+console.log(handler, '<<<< handler');
 scrape( listing, titleSelector, handler );
