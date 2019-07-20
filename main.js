@@ -31,9 +31,6 @@ rp(url)
 		$('ul.items > li.cms_page > strong').each((i, elem) => {
 			console.log($(elem).text(), '<<<<<<<< AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
 		});
-		$('div.product__left > a > img.product__img ').each((i, elem) => {
-			console.log($(elem).attr('alt'), '<<<<<<<< BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB');
-		});
 	}).catch(function(err){
 		//handle error
 	console.log(err, '<<<<<<<< err');
@@ -51,6 +48,19 @@ rp(url2)
 				text: 'Artículo destacado del día en WIKIPEDIA: '+ $(elem).text() +
 					'. Enlace: https://es.wikipedia.org/' + $(elem).attr('href')
 			});*/
+		});
+	}).catch(function(err){
+	//handle error
+});
+
+const url3 = 'https://www.packtpub.com/big-data-and-business-intelligence/hands-transfer-learning-python';
+
+rp(url3)
+	.then(function(html){
+		//success!
+		const $ = cheerio.load(html);
+		$('h1.page-title > span').each((i, elem) => {
+			console.log($(elem).text(), '<<<<<<<< PAGINA INTERIOR');
 		});
 	}).catch(function(err){
 	//handle error
