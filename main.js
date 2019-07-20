@@ -18,22 +18,43 @@ const elements = {
 
 const url = 'https://www.packtpub.com/free-learning';
 
-/*const $ = cheerio.load('<h1 class="title">Hello world</h1> <h2 class="title">Hello world</h2>')
-
-console.log($.html(), '<<<< HAHAHAHAH');
-console.log($('h2.title').text(), '<<<< HAHAHAHAH 2');*/
-
-rp(url).then(function(html){
+rp(url)
+	.then(function(html){
 		//success!
-		console.log(html, '<<<< HTML');
 		const $ = cheerio.load(html);
-		// console.log($('h2.product__title').length, '<<<<<<<<<<<< LENGTH');
-		console.log($('h2').text(), '<<<<<<<<<<<< CONTENT');
-		// console.log($('h2.product__title', html.attribs), '<<<<<<<<<<<< ATTRIBS');
-	})
-	.catch(function(err){
+		$('h2').each((i, elem) => {
+			console.log($(elem).text(), '<<<<<<<< TEXT');
+		});
+		$('img.bookimage').each((i, elem) => {
+			console.log($(elem).attr('alt'), '<<<<<<<< ALT');
+		});
+		$('ul.items > li.cms_page > strong').each((i, elem) => {
+			console.log($(elem).text(), '<<<<<<<< AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+		});
+		$('div.product__left > a > img.product__img ').each((i, elem) => {
+			console.log($(elem).attr('alt'), '<<<<<<<< BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB');
+		});
+	}).catch(function(err){
 		//handle error
+	console.log(err, '<<<<<<<< err');
 	});
+
+const url2 = 'https://es.wikipedia.org/wiki/Wikipedia:Portada';
+
+rp(url2)
+	.then(function(html){
+		//success!
+		const $ = cheerio.load(html);
+		$('div#main-tfa > h2 > span > a').each((i, elem) => {
+			console.log($(elem).text(), '<<<<<<<< Artículo destacado del día en WIKIPEDIA');
+			/*slack.send( {
+				text: 'Artículo destacado del día en WIKIPEDIA: '+ $(elem).text() +
+					'. Enlace: https://es.wikipedia.org/' + $(elem).attr('href')
+			});*/
+		});
+	}).catch(function(err){
+	//handle error
+});
 
 /*slack.send( {
 	text: message
