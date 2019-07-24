@@ -3,8 +3,8 @@ const rp = require('request-promise');
 const moment = require('moment');
 
 let slackConfig = {
-	webhook_url: 'https://hooks.slack.com/services/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' // #tests - BotName: Robin
-	// webhook_url: 'https://hooks.slack.com/services/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' // #feed-bots - BotName: Robin
+	// webhook_url: 'https://hooks.slack.com/services/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' // #tests - BotName: Robin
+	webhook_url: 'https://hooks.slack.com/services/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' // #feed-bots - BotName: Robin
 };
 
 const slack = new Slack(slackConfig.webhook_url);
