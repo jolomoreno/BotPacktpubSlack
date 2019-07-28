@@ -3,7 +3,7 @@ const rp = require('request-promise');
 const moment = require('moment');
 
 let slackConfig = {
-	// webhook_url: 'https://hooks.slack.com/services/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' // #tests - BotName: Robin
+	//webhook_url: 'https://hooks.slack.com/services/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' // #tests - BotName: Robin
 	webhook_url: 'https://hooks.slack.com/services/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' // #feed-bots - BotName: Robin
 };
 
@@ -31,10 +31,11 @@ rp(url3)
 		rp(urlParsed)
 			.then( (response2) => {
 				const response2Obj = JSON.parse(response2);
-				let message = `Hola!, \nEste es el libro gratuito de hoy en Packtpub: ${response2Obj.title}.\n`;
+				console.log(response2Obj, '<<<<<<<<<<< response2Obj');
+				let message = `Hola!, \nEste es el libro gratuito de hoy en Packtpub: *${response2Obj.title}*.\n`;
 				message += `Lo puedes obtener en el siguiente enlace (debes estar registrado/a): ${baseUrl}/free-learning\n`;
-				message += `En el caso de que ya lo tengas, lo puedes leer en el siguiente enlace: ${subscriptionUrl}${response2Obj.readUrl}`;
-				console.log(message, '<<<<<<<<<<< message');
+				message += `En el caso de que ya lo tengas, lo puedes leer en el siguiente enlace: ${subscriptionUrl}${response2Obj.readUrl}\n`;
+				message += `${response2Obj.coverImage}`;
 				slack.send( {
 					text: message
 				})
