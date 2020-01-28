@@ -8,20 +8,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/kubide/botslackpacktpub.git"
+    "url": "git+https://github.com/jolomoreno/BotPacktpubSlack"
   },
   "keywords": [
     "bot",
     "slack",
-    "kubide",
     "packtpub"
   ],
   "author": "Jose Lorenzo Moreno Moreno",
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/kubide/botslackpacktpub/issues"
+    "url": "https://github.com/jolomoreno/BotPacktpubSlack/issues"
   },
-  "homepage": "https://gitlab.com/kubide/botslackpacktpub#readme",
+  "homepage": "https://github.com/jolomoreno/BotPacktpubSlack#readme",
   "dependencies": {
     "cheerio": "1.0.0-rc.3",
     "html-scrape": "0.2.0",
