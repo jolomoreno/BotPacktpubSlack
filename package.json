@@ -24,7 +24,7 @@
   "dependencies": {
     "cheerio": "1.0.0-rc.3",
     "html-scrape": "0.2.0",
-    "jquery": "3.4.1",
+    "jquery": "3.5.0",
     "moment": "2.24.0",
     "node-slack": "0.0.7",
     "request-promise": "4.2.4",
